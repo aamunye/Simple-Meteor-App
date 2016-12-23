@@ -14,19 +14,17 @@ Template.hello.helpers({
     return Template.instance().counter.get();
   },
   messages() {
+
     return Messages.find();
   },
 });
 
 Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
+  'click .delete'() {
+    console.log(this._id);
+    Meteor.call('messages.remove', this._id);
   },
 });
 
 Template.body.helpers({
-  tasks() {
-    return Tasks.find({});
-  },
 });
