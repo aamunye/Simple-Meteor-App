@@ -1,0 +1,29 @@
+<head>
+  <title>Simple-Meteor-App</title>
+</head>
+
+<body>
+  <h1>Simple Meteor app for the application</h1>
+
+  {{> hello}}
+
+</body>
+
+<template name="hello">
+  <table>
+    <tr>
+      <th>UserId</th>
+      <th>messageText</th>
+      <th>CreatedAt</th>
+      <th></th>
+    </tr>
+    <tr>
+      {{#each messages}}
+      <td><strong>{{userId}}</strong></td>
+      <td>{{messageText}}</td>
+      <td>{{createdAt}}</td>
+      <td><button class="delete">&times;</button></td>
+      {{/each}}
+    </tr>
+  </table>
+</template>
