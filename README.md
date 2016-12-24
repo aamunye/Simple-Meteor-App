@@ -12,3 +12,5 @@ It lists messages in the system in the order by which they were added.  You can 
      $ meteor
 
  Then enter "http://localhost:3000/" into a web browser.
+ 
+ ![Screenshot](./screenshot1.png)
