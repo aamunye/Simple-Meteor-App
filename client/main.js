@@ -5,8 +5,6 @@ import { Messages } from '../imports/api/messages.js';
 import './main.html';
 
 Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
 });
 
 Template.hello.helpers({
@@ -14,15 +12,37 @@ Template.hello.helpers({
     return Template.instance().counter.get();
   },
   messages() {
-
-    return Messages.find();
+    return Messages.find({}, { sort: { createdAt: 1 } });
   },
 });
 
 Template.hello.events({
   'click .delete'() {
-    console.log(this._id);
-    Meteor.call('messages.remove', this._id);
+    Meteor.call('remove', this._id);
+  },
+
+  'submit .new-message'(event) {
+    // Prevent default browser form submit
+    event.preventDefault();
+
+    // Get value from form element
+    const target = event.target;
+    const text = target.text.value;
+
+    if(!text){
+      //Nothing entered
+      return;
+    }
+
+    // Insert a message into the collection
+    Messages.insert({
+      username: 'theUser',
+      messageText: text,
+      createdAt: new Date(),
+    });
+
+    // Clear form
+    target.text.value = '';
   },
 });
 

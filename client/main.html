@@ -4,26 +4,29 @@
 
 <body>
   <h1>Simple Meteor app for the application</h1>
-
   {{> hello}}
 
 </body>
 
+
 <template name="hello">
+  <form class="new-message">
+    <input type="text" name="text" placeholder="Add new message" />
+  </form>
   <table>
     <tr>
-      <th>UserId</th>
+      <th>username</th>
       <th>messageText</th>
       <th>CreatedAt</th>
       <th></th>
     </tr>
+    {{#each messages}}
     <tr>
-      {{#each messages}}
-      <td><strong>{{userId}}</strong></td>
+      <td><strong>{{username}}</strong></td>
       <td>{{messageText}}</td>
       <td>{{createdAt}}</td>
       <td><button class="delete">&times;</button></td>
-      {{/each}}
     </tr>
+    {{/each}}
   </table>
 </template>
