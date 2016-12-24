@@ -15,11 +15,4 @@ Meteor.methods({
   'remove'(messageId) {
     Messages.remove(messageId);
   },
-  'insert'(text) {
-    Mongo.Collection('messages').insert({
-      username: 'theUser',
-      messageText: text,
-      createdAt: new Date(),
-    });
-  },
 });

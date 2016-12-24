@@ -30,7 +30,7 @@ Template.hello.events({
     const text = target.text.value;
 
     if(!text){
-      //Nothing entered
+      //Nothing entered; do nothing
       return;
     }
 
